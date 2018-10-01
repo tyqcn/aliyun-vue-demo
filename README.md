@@ -14,6 +14,15 @@ npm run dev
 # build for production with minification
 npm run build
 
+# build for test with minification
+npm run build:test
+
+# upload to oss
+npm run upload
+
+# rollback
+npm run rollback
+
 # build for production and view the bundle analyzer report
 npm run build --report
 ```

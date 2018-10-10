@@ -1,0 +1,1 @@
+document.write("<link type=\"text/css\" rel=\"stylesheet\" href='{{app.css}}'>");document.write("<script src='{{manifest.js}}'><\/script>");document.write("<script src='{{vendor.js}}'><\/script>");document.write("<script src='{{app.js}}'><\/script>");

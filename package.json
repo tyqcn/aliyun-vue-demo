@@ -5,13 +5,18 @@
   "author": "tangyuanqu",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "dev": "NODE_ENV=development webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
-    "build": "node build/build.js"
+    "unit": "jest --config test/unit/jest.conf.js --coverage",
+    "build": "NODE_ENV=production node build/build.js",
+    "build:test": "NODE_ENV=testing node build/build.js",
+    "upload": "node build/upload.js",
+    "rollback": "node build/rollback.js"
   },
   "dependencies": {
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vuex": "^2.3.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -57,6 +62,7 @@
   "browserslist": [
     "> 1%",
     "last 2 versions",
-    "not ie <= 8"
+    "not ie <= 8",
+    "iOS >= 8"
   ]
 }

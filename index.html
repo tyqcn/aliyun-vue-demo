@@ -8,5 +8,9 @@
   <body>
     <div id="app"></div>
     <!-- built files will be auto injected -->
+
+    <!-- 如果js css 文件跟 html 不在同一个域名需要这么配置 -->
+    <!--<script>document.write("<script src='https://youradress.com/static/entry.js?t=" + new Date().getTime() + "'><\/script>");</script>-->
+    <script>document.write("<script src='/static/entry.js?t=" + new Date().getTime() + "'><\/script>");</script>
   </body>
 </html>

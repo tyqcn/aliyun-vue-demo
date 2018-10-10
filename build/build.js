@@ -1,7 +1,11 @@
 'use strict'
 require('./check-versions')()
-
-process.env.NODE_ENV = 'production'
+console.log(process.env.NODE_ENV)
+if(process.env.NODE_ENV === undefined){
+  console.log("no env...");
+  process.exit(1);
+}
+//process.env.NODE_ENV = 'production'
 
 const ora = require('ora')
 const rm = require('rimraf')
@@ -10,8 +14,9 @@ const chalk = require('chalk')
 const webpack = require('webpack')
 const config = require('../config')
 const webpackConfig = require('./webpack.prod.conf')
+const fs = require("fs");
 
-const spinner = ora('building for production...')
+const spinner = ora('building for ' + process.env.NODE_ENV + '...')
 spinner.start()
 
 rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
@@ -36,6 +41,34 @@ rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
     console.log(chalk.yellow(
       '  Tip: built files are meant to be served over an HTTP server.\n' +
       '  Opening index.html over file:// won\'t work.\n'
-    ))
+    ));
+
+    let assetStr = stats.toString({
+      modules: false,
+      children: false,
+      chunks: false,
+      chunkModules: false
+    });
+
+    let publicPath = process.env.NODE_ENV === 'production'
+      ? config.build.assetsPublicPath
+      : config.dev.assetsPublicPath
+    let manifestJs = publicPath + "static/js/" + /manifest\..+?\.js/.exec(assetStr)[0];
+    let vendorJs = publicPath + "static/js/" + /vendor\..+?\.js/.exec(assetStr)[0];
+    let appJs = publicPath + "static/js/" + /app\..+?\.js/.exec(assetStr)[0];
+    let appCss = publicPath + "static/css/" + /app\..+?\.css/.exec(assetStr)[0];
+
+    let data = fs.readFileSync(path.resolve(__dirname, 'entry.js'));
+    let dataString = data.toString();
+    dataString = dataString.replace(/{{app.css}}/, appCss);
+    dataString = dataString.replace(/{{app.js}}/, appJs);
+    dataString = dataString.replace(/{{manifest.js}}/, manifestJs);
+    dataString = dataString.replace(/{{vendor.js}}/, vendorJs);
+
+    fs.writeFile(path.resolve(__dirname, '../dist/static/entry.js'), dataString,  function(err) {
+      if (err) {
+        return console.error(err);
+      }
+    });
   })
 })

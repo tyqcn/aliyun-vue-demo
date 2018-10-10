@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Nav1 from '@/components/Nav1'
 import Nav2 from '@/components/Nav2'
 import Nav3 from '@/components/Nav3'
+import Mask from '@/components/MaskPage'
 
 Vue.use(Router)
 
@@ -41,7 +42,13 @@ const routes = [
       meta: {
         rootPage: "nav3"
       }
+    }, {
+    path: '/mask',
+    component: Mask,
+    meta: {
+      rootPage: "nav1"
     }
+  }
   ]
 
 const router = new Router({

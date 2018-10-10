@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta name=”renderer” content=”webkit”/>
     <title>aliyun-vue-demo</title>
+    <script>(function(doc,win){var scale=null;var docEl=doc.documentElement,resizeEvt='orientationchange'in window?'orientationchange':'resize',recalc=function(){var clientWidth=docEl.clientWidth,clientHeight=docEl.clientHeight;if(!clientWidth)return;if(doc.body&&scale===null){var rem=7.5;doc.body.style.width=rem+"rem";var fontSizeStr=docEl.style.fontSize;scale=(rem*fontSizeStr.substr(0,fontSizeStr.length-2))/doc.body.clientWidth;doc.body.style.width="";if(Math.abs(scale-1)<0.005){scale=1}}if(scale===null){docEl.style.fontSize=100*(clientWidth/750)+'px'}else{docEl.style.fontSize=100*(clientWidth/750)*scale+'px'}};recalc();if(!doc.addEventListener)return;win.addEventListener(resizeEvt,recalc,false);doc.addEventListener('DOMContentLoaded',recalc,false)})(document,window);</script>
   </head>
   <body>
     <div id="app"></div>

@@ -46,8 +46,7 @@
 </script>
 
 <style scoped>
-    .navigation-layer ul{display: flex;align-items: center;padding: 0 .86rem;justify-content: space-between;height: 100%;color: #aaaaaa;}
-    .nav-item{display: flex;flex-direction: column;align-items: center;width: 33%; height: 1rem}
-    .nav-item a{transform: scale(.83);}
+    .navigation-layer ul{display: flex;align-items: center;justify-content: space-between;height: 100%;color: #aaaaaa;}
+    .nav-item{display: flex;flex-direction: column;align-items: center;width: 33%; height: 1rem;font-size: .36rem;line-height: .98rem;text-align: center;border-right: 1px solid #e8e8e8;}
     .nav-item.chosen a{color: #fbcf29;}
 </style>

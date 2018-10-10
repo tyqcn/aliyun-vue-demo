@@ -1,0 +1,9 @@
+html,body,#app{height: 100%;}
+body{overflow-x: hidden;}
+#app{font-size: .24rem;}
+/*布局，层级*/
+.content-layer,.navigation-layer,.mask-layer,.popup-layer{position: fixed;top: 0;left: 0;background: #f6f6f6;width: 100%;height: 100%;}
+.content-layer{z-index: 1;overflow: auto;-webkit-overflow-scrolling : touch;}
+.navigation-layer{z-index: 10;top: auto;bottom: 0;background: #fff;height: .98rem;}
+.mask-layer{z-index: 20;overflow: auto;-webkit-overflow-scrolling : touch;}
+.popup-layer{z-index: 30;}
